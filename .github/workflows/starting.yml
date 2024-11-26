@@ -1,0 +1,19 @@
+name: starting
+
+on: push
+jobs:
+
+  build:
+    
+    runs-on: ubuntu-latest
+    steps: # список шагов, которые надо выполнить
+      # экшен — выполняет какую-то задачу
+      # checkout — клонирует репозиторий
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        # - run: npm install
+        # run – произвольная bash-команда
+      # ls -la выведет содержимое текущего репозитория
+      - run: make setup
+      - run: make test
+      - run: make lint
